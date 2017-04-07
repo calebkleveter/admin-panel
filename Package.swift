@@ -9,5 +9,6 @@ let package = Package(
         .Package(url: "https://github.com/nodes-vapor/slugify.git", majorVersion: 1),
         .Package(url: "https://github.com/nodes-vapor/flash.git", majorVersion: 0),
         .Package(url: "https://github.com/nodes-vapor/paginator.git", majorVersion: 0),
+        .Package(url: "https://github.com/vapor/postgresql-provider.git", majorVersion: 1, minor: 1),
     ]
 )

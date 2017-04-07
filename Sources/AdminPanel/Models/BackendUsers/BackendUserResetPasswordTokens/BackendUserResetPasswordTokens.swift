@@ -2,7 +2,7 @@ import Vapor
 import Fluent
 import Foundation
 import HTTP
-import FluentMySQL
+import VaporPostgreSQL
 
 public final class BackendUserResetPasswordTokens: Model {
  
@@ -65,10 +65,10 @@ public final class BackendUserResetPasswordTokens: Model {
     public static func prepare(_ database: Database) throws {
         try database.create("backend_reset_password_tokens") { table in
             table.id()
-            table.varchar("email", length: 191, unique: true)
-            table.varchar("token", length: 191)
-            table.datetime("used_at", optional: true)
-            table.datetime("expire_at", optional: true)
+            table.string("email", length: 191, unique: true)
+            table.string("token", length: 191)
+            table.dateTime("used_at", optional: true)
+            table.dateTime("expire_at", optional: true)
             table.timestamps()
         }
         
