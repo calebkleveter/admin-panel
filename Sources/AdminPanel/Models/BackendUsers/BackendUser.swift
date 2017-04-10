@@ -6,7 +6,6 @@ import Turnstile
 import TurnstileCrypto
 import Auth
 import VaporPostgreSQL
-import Sugar
 
 public final class BackendUser: Auth.User, Model {
     
