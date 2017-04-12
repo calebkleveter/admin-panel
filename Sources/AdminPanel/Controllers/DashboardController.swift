@@ -26,4 +26,26 @@ public final class DashboardController {
     public func index(request: Request) throws -> ResponseRepresentable {
         return try drop.view.make("Dashboard/view", for: request)
     }
+    
+    public func custom() -> [(route: (Request) throws -> ResponseRepresentable, url: String)] {
+        if let routes = customRoutePaths?.map({ (path) -> ((Request) throws -> ResponseRepresentable) in
+            return { (Request) throws -> ResponseRepresentable in
+                return try self.drop.view.make(path)
+            }
+        }) {
+            var pages: [(route: (Request) throws -> ResponseRepresentable, url: String)] = []
+            
+            if let urls = self.customRouteURLs {
+                var counter = 0
+                for url in urls {
+                    let page = (route: routes[counter], url: url)
+                    pages.append(page)
+                }
+                counter += 1
+            }
+            return pages
+        } else {
+            fatalError("The paths set for the views for the custom routes do not exist.")
+        }
+    }
 }
