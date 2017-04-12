@@ -29,8 +29,8 @@ public final class DashboardController {
     
     public func custom() -> [(route: (Request) throws -> ResponseRepresentable, url: String)] {
         if let routes = customRoutePaths?.map({ (path) -> ((Request) throws -> ResponseRepresentable) in
-            return { (Request) throws -> ResponseRepresentable in
-                return try self.drop.view.make(path)
+            return { (request) throws -> ResponseRepresentable in
+                return try self.drop.view.make(path, for: request)
             }
         }) {
             var pages: [(route: (Request) throws -> ResponseRepresentable, url: String)] = []
