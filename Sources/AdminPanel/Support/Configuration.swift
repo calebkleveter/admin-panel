@@ -135,6 +135,23 @@ public struct Configuration {
         return roleArray
     }
     
+    private static func extract(field: Field, config: Config) throws -> [String] {
+        guard let array = config[field.path]?.array else {
+            throw field.error
+        }
+        
+        var viewsArray: [String] = []
+        
+        for path in array {
+            guard let string = path.string else {
+                throw field.error
+            }
+            viewsArray.append(string)
+        }
+        
+        return viewsArray
+    }
+    
     public func getRoleOrFail(_ slug: String) throws -> Role {
         for role in roles {
             if role.slug == slug {
