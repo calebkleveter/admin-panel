@@ -7,9 +7,11 @@ public struct DashboardRoutes: RouteCollection {
     public typealias Wrapped = Responder
     
     let drop: Droplet
+    let customRoutePaths: [String]?
     
-    public init(droplet: Droplet) {
+    public init(droplet: Droplet, customViews paths: [String]? = nil) {
         drop = droplet
+        customRoutePaths = paths
     }
     
     public func build<Builder: RouteBuilder>(_ builder: Builder) where Builder.Value == Wrapped {
