@@ -20,6 +20,7 @@ public struct Configuration {
         case autoLoginFirstUser         = "adminpanel.autoLoginFirstUser"
         case ssoCallbackPath            = "adminpanel.ssoCallbackPath"
         case roles                      = "adminpanel.roles"
+        case customViews                = "adminpanel.customViews"
         
         var path: [String] {
             return rawValue.components(separatedBy: ".")
@@ -43,6 +44,7 @@ public struct Configuration {
     public var ssoProvider: SSOProtocol?
     public let ssoCallbackPath: String?
     public let roles: [Role]
+    public let customViews: [String]
     public var roleOptions: [String: String] {
         
         var options: [String: String] = [:]
@@ -79,6 +81,7 @@ public struct Configuration {
         autoLoginFirstUser         = try Configuration.extract(field: .autoLoginFirstUser, config: config)
         ssoCallbackPath            = config[Field.ssoCallbackPath.path]?.string
         roles                      = try Configuration.extract(field: .roles, config: config)
+        customViews                = try Configuration.extract(field: .customViews, config: config)
     }
     
     public func makeNode() -> Node {
@@ -91,7 +94,8 @@ public struct Configuration {
             "loginSuccessPath"          : Node(loginSuccessPath),
             "welcomeMailViewPath"       : Node(welcomeMailViewPath),
             "resetPasswordViewPath"     : Node(resetPasswordViewPath),
-            "sso"                       : Node(ssoProvider != nil)
+            "sso"                       : Node(ssoProvider != nil),
+            "customViews"               : Node.array(customViews.map({ return Node.string($0)}))
         ])
     }
     
