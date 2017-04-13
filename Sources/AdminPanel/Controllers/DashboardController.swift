@@ -40,8 +40,8 @@ public final class DashboardController {
                 for url in urls {
                     let page = (route: routes[counter], url: url)
                     pages.append(page)
+                    counter += 1
                 }
-                counter += 1
             }
             return pages
         } else {
