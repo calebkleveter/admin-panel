@@ -1,7 +1,8 @@
 import Vapor
+import Routing
 
-protocol AdminPanelController {
+public protocol AdminPanelController {
     init()
     
-    func addRoutes(to drop: Droplet)
+    func addRoutes(to group: RouteGroup<Droplet.Value, (RouteGroup<Droplet.Value, Droplet>)>)
 }
