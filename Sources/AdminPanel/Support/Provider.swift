@@ -5,6 +5,8 @@ import Auth
 import HTTP
 import Sugar
 
+public var customController: AdminPanelController?
+
 public final class Provider: Vapor.Provider {
     
     var config: Configuration
@@ -59,8 +61,14 @@ public final class Provider: Vapor.Provider {
             }
             
             droplet.group(collection: Middlewares.secured) { secured in
+                let dashboardGroup = secured.grouped("/admin/dashboard")
+                
                 if config.loadDashboardRoute {
-                    secured.grouped("/admin/dashboard").collection(DashboardRoutes(droplet: droplet, customViews: config.customViews))
+                    dashboardGroup.collection(DashboardRoutes(droplet: droplet, customViews: config.customViews))
+                }
+                
+                if let controller = customController {
+                    controller.addRoutes(to: dashboardGroup)
                 }
                 
                 secured.grouped("/admin/backend_users").collection(BackendUsersRoutes(droplet: droplet))
