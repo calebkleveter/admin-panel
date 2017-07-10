@@ -1,7 +1,22 @@
+<<<<<<< HEAD
 # Admin panel, build easy customizable admin features for your app!
 [![Language](https://img.shields.io/badge/Swift-3-brightgreen.svg)](http://swift.org)
+=======
+# Admin Panel ✍️
+[![Swift Version](https://img.shields.io/badge/Swift-3.1-brightgreen.svg)](http://swift.org)
+[![Vapor Version](https://img.shields.io/badge/Vapor-2-F6CBCA.svg)](http://vapor.codes)
+[![Linux Build Status](https://img.shields.io/circleci/project/github/nodes-vapor/admin-panel.svg?label=Linux)](https://circleci.com/gh/nodes-vapor/admin-panel)
+[![macOS Build Status](https://img.shields.io/travis/nodes-vapor/admin-panel.svg?label=macOS)](https://travis-ci.org/nodes-vapor/admin-panel)
+[![codebeat badge](https://codebeat.co/badges/52c2f960-625c-4a63-ae63-52a24d747da1)](https://codebeat.co/projects/github-com-nodes-vapor-admin-panel)
+[![codecov](https://codecov.io/gh/nodes-vapor/admin-panel/branch/master/graph/badge.svg)](https://codecov.io/gh/nodes-vapor/admin-panel)
+[![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=https://github.com/nodes-vapor/admin-panel)](http://clayallsopp.github.io/readme-score?url=https://github.com/nodes-vapor/admin-panel)
+>>>>>>> fd04d8b411fb4a014e0dbb295de02aad5b9fdab7
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/nodes-vapor/admin-panel/master/LICENSE)
-# Features
+
+
+Build easy customizable admin features for your app!
+
+## Features
  - Admin user system with roles
  - Welcome mails
  - Reset password
@@ -10,6 +25,7 @@
  
 ![image](https://cloud.githubusercontent.com/assets/1279756/21502899/83ff79dc-cc53-11e6-8222-40bfa773d361.png)
 
+<<<<<<< HEAD
 # Installation
 
 #### Prerequisites:
@@ -17,16 +33,28 @@
 You will need to setup you project with a PostgreSQL database. Follow the README for [this repo](https://github.com/vapor/postgresql-provider).
 
 #### Install
+=======
+
+## 📦 Installation
+>>>>>>> fd04d8b411fb4a014e0dbb295de02aad5b9fdab7
 
 Update your `Package.swift` file.
 ```swift
 .Package(url: "https://github.com/calebkleveter/postgres-admin-panel.git", majorVersion: 0)
 ```
 
+<<<<<<< HEAD
 #### Config
 Create `Config/adminpanel.json`
+=======
 
-```
+## Getting started 🚀
+>>>>>>> fd04d8b411fb4a014e0dbb295de02aad5b9fdab7
+
+### Configs
+Create config `adminpanel.json`
+
+```json
 {
     "name": "Admin Panel",
     "unauthorizedPath": "/admin/login",
@@ -61,9 +89,14 @@ Create `Config/adminpanel.json`
 
 ```
 
+<<<<<<< HEAD
 Create `Config/mail.json`
 
 ```
+=======
+Create config `mail.json`
+```json
+>>>>>>> fd04d8b411fb4a014e0dbb295de02aad5b9fdab7
 {
     "smtpHost": "smtp.mailgun.org",
     "smtpPort": "465",
@@ -73,9 +106,14 @@ Create `Config/mail.json`
 }
 ```
 
+<<<<<<< HEAD
 Make sure to have `Config/app.json` setup
 
 ```
+=======
+Make sure to have config `app.json` setup
+```json
+>>>>>>> fd04d8b411fb4a014e0dbb295de02aad5b9fdab7
 {
     "name": "MY-PROJECT",
     "url": "0.0.0.0:8080"
@@ -87,14 +125,22 @@ The url here will be used as redirect link in invite emails fx.
 
 
 ### main.swift
+<<<<<<< HEAD
 
 ```
+=======
+```swift
+>>>>>>> fd04d8b411fb4a014e0dbb295de02aad5b9fdab7
 import AdminPanel
 ```
 
 And add provider (before defining routes, but after defining cache driver)
+<<<<<<< HEAD
 
 ```
+=======
+```swift
+>>>>>>> fd04d8b411fb4a014e0dbb295de02aad5b9fdab7
 try drop.addProvider(AdminPanel.Provider.self)
 
 /// ... routes goes here
@@ -160,8 +206,17 @@ AdminPanel.customController = CONTROLLER()
 Do this *before* adding the provider to the droplet.
 
 ### Seed data
+<<<<<<< HEAD
 
+=======
+Add the seeder command to your `main.swift`
+```swift
+drop.commands.append(AdminPanel.Seeder(drop: drop))
+>>>>>>> fd04d8b411fb4a014e0dbb295de02aad5b9fdab7
 ```
+
+And then run the command in your terminal (remember to build the project first)
+```swift
 vapor run admin-panel:seeder
 ```
 
@@ -195,3 +250,24 @@ Wiki: https://github.com/nodes-vapor/admin-panel/wiki
 Github: https://github.com/nodes-frontend/nodes-ui
 
 Doc: https://nodes-frontend.github.io/nodes-ui/
+<<<<<<< HEAD
+=======
+
+#### Using views from packages (for development)
+```swift
+drop.view = LeafRenderer(
+    viewsDir: Droplet().workDir + "/Packages/AdminPanel-0.5.4/Sources/AdminPanel/Resources/Views"
+)
+```
+
+
+## 🏆 Credits
+
+This package is developed and maintained by the Vapor team at [Nodes](https://www.nodesagency.com).
+The package owner for this project is [Steffen](https://github.com/steffendsommer).
+
+
+## 📄 License
+
+This package is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+>>>>>>> fd04d8b411fb4a014e0dbb295de02aad5b9fdab7
